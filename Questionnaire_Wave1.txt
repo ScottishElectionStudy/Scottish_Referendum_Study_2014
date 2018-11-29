@@ -1,0 +1,1078 @@
+
+
+[q1] {single} If there were an election to the Scottish Parliament tomorrow, and thinking about the constituency vote, how would you vote? 
+<1>  Conservative
+<2>  Labour
+<3>  Liberal Democrat
+<4>  Scottish National Party
+<5>  Some other party
+<6>  Wouldn’t vote
+<7>  Don't know
+ 
+[q1a if q1==5] Which other party would you vote for?
+<5>  Green
+<6>  Scottish Socialist Party
+<7>  UK Independence Party (UKIP)    
+<8>  Solidarity
+<9>  Some other party
+<10>  Don't know 
+
+[q2] {single} And thinking about the regional or party vote for the Scottish Parliament, which party list would you vote for?
+<1>  Conservative
+<2>  Labour
+<3>  Liberal Democrat
+<4>  Scottish National Party
+<5>  Green
+<6>  Scottish Socialist Party
+<7>  UK Independence Party (UKIP)     
+<8>  Some other party
+<9>  Wouldn’t vote
+<10>  Don't know  
+ 
+ 
+
+# POLITICAL CONTROLS #
+
+[polInterest]{grid roworder=randomize}Some people are more interested in politics than others.  On this scale, please could you tell us how interested you are in…?
+-[polInterestUK] UK politics in general
+-[polInterestScot] Scottish politics in general
+-[polInterestForeign] International politics
+-[polInterestRef] The Independence referendum
+<111> 0 – Not at all interested
+<1> 1
+<2> 2
+<3> 3
+<4> 4
+<5> 5
+<6> 6
+<7> 7
+<8> 8
+<9> 9
+<10> 10 – Extremely interested
+<99> Don't know
+
+
+
+# DEPENDENT VARIABLES #
+
+[scotReferendumTurnout]{single} Many people don't vote these days. How likely is it that you will vote in the referendum on Scottish independence that will be held on 18th September 2014?
+<5> Very likely that I will vote
+<4> Fairly likely
+<3> Neither likely nor unlikely
+<2> Fairly unlikely
+<1> Very unlikely that I will vote
+<98> I have already voted by post
+<99> Don't know
+
+[scotReferendumIntention]{single}  In that referendum, voters will be asked, "Should Scotland be an independent country?" Do you think you will vote "Yes" or "No"? (If you have already voted by post, please select the appropriate option below)
+<1> Will vote ‘Yes’
+<2> Will vote ‘No’
+<3> Will not vote
+<99> Don't know
+
+[scotReferendumLeaning if scotReferendumIntention==99]{single} If you had to choose, what is your best guess at how you will vote?
+<1> Will vote "Yes"
+<2> Will vote "No"
+<99> Really can’t choose
+
+[refChoiceSure if (scotReferendumIntention in [1,2] or scotReferendumLeaning in [1,2])]{scale 1 7 dk = 1 dk_text="Don't know"} How certain are you that you will vote that way?
+-[refChoiceCertainty] Not certain at all | Completely certain
+
+[refChoiceNeg if scotReferendumLeaning==99]{single} Sometimes people not sure how they will vote are at least pretty sure how they will _not_ vote.  How about you – which of these best describes you?
+<1> Pretty sure that I will _not_ vote "Yes"
+<2> Pretty sure that I will _not_ vote "No"
+<99> Just not sure at all either way
+
+
+[refChoiceReason]{single} Please could you briefly explain the SINGLE MOST IMPORTANT reason why you intend to vote that way.
+<1> [refChoiceReason_text] {open rows=1 cols=63 prompt="Please write in"}
+<98> None
+<99> Don't know
+
+
+[refChoiceTime]{single} Please could you tell us roughly when you decided how to vote?  If you haven’t decided yet, then just choose that option.
+<1>I’ve known all along how I would vote
+<2>Once the referendum date was announced (in March 2013) 
+<3>A year or so ago
+<4>A few months ago
+<5>During the last few weeks
+<6> I haven’t decided yet
+
+
+{page p_scotRefExpectation}
+
+<<script>
+$(page_state).on('after_content_loaded', function () { $('.rule_dk_label').text(" Don't know");});
+</script>>
+
+
+[scotRefExpectation]{rule 0 100 left="0 - Scotland will definitely choose to stay in UK" right="100 - Scotland will definitely choose independence" show_value=1 dk=1} On this scale, how likely do you think it is that Scotland will choose to become an independent country?
+
+{end page p_scotRefExpectation}
+
+
+{page p_scotRefExpectationTurnout}
+
+<<script>
+
+$(page_state).on('after_content_loaded', function () {  $('.rule_dk_label').text(" Don't know");});
+</script>>
+
+[scotRefExpectationTurnout]{rule 0 100 left="0% of people will vote" right="100% of people will vote" show_value=1 dk=1} What proportion of people do you think will turn out to vote in the Scottish independence referendum?
+
+{end page p_scotRefExpectationTurnout}
+
+
+[happyScotIndepResult]{scale 0 10 dk=1 dk_text="Don't know"} How happy or how disappointed would you be if the "Yes" side won the referendum?
+-[happyScotIndepResultScale] Extremely disappointed |  Extremely happy
+
+[happyScotIndepResultNo]{scale 0 10 dk=1 dk_text="Don't know"} And how happy or how disappointed would you be if the "No" side won the referendum?
+-[happyScotIndepResultNoScale] Extremely disappointed |  Extremely happy
+
+
+# CONSTITUTIONAL PREFERENCES #
+
+[constOptions]{grid} Some people have more than one preference for how Scotland could be run in the future. Please assess how appealing each of the following options is to you. The scale runs from 0 to 10 where 0 is not at all appealing to me and 10 is very appealing to me:
+-[constIndep] Scotland should be an independent country
+-[constDevomax] Scotland should remain within the UK but the Scottish Parliament should have more powers
+-[constStatusquo] Scotland should remain within the UK and the Scottish Parliament should have the same powers as it has right now
+-[constLesspower] Scotland should remain within the UK but the Scottish Parliament should have fewer powers
+-[constAbolishSP] Scotland should remain within the UK but the Scottish Parliament should be abolished
+<111> 0 – Not at all appealing
+<1> 1
+<2> 2
+<3> 3
+<4> 4
+<5> 5
+<6> 6
+<7> 7
+<8> 8
+<9> 9
+<10> 10 – Very appealing to me
+<99> Don’t know
+
+
+[whoGoverns]{grid} The following questions are about the balance of powers between the UK government at Westminster and the Scottish Government at Holyrood.  On the following scale that runs from 0 (Westminster has all the powers) to 10 (Holyrood has all the powers), please choose a number that best describes each of the following situations.
+-[whoGovernsNow] Where Scotland is now
+-[whoGovernsOught]Where you would ideally like Scotland to be
+-[whoGovernsIndep] Where an independent Scotland would be
+-[whoGovernsDevoMax] Where Scotland would be if ‘Devo Max’
+-[whoGovernsNo2] Where Scotland would be _two_ years after a No vote
+-[whogovernsNo10] Where Scotland would be _ten_ years after a No vote
+<111> 0 – Westminster has all the powers
+<1> 1
+<2> 2
+<3> 3
+<4> 4
+<5> 5
+<6> 6
+<7> 7
+<8> 8
+<9> 9
+<10> 10 – Holyrood has all the powers
+<99> Don’t know
+
+
+[devoResponsibleNew]{grid width=100 roworder=randomize} If Scotland remains part of the United Kingdom, it would retain control over existing policy areas (such as education and law and order). When it comes to the following policy areas currently reserved to Westminster, which institution do you think should make most of the important decisions for Scotland about…?
+-[devoResponsibleNewWelfare] Welfare benefits (apart from pensions)
+-[devoResponsibleNewDefence] Defence and foreign affairs
+-[devoResponsibleNewTax] The level of taxes
+-[devoResponsibleNewImmig] Immigration
+-[devoResponsibleNewPens] Pensions
+-[devoResponsibleNewEnergy] Energy
+<1> The Scottish Parliament
+<2> The UK Parliament
+<3> Other
+<99> Don't know
+
+
+[powersPref]{single} Suppose for a moment that Scotland votes to stay within the United Kingdom.  If you had to choose your top priority out of these three options, which would it be?
+<1>Responsibility over new policy areas
+<2>More powerful in existing policy areas
+<3>More influence in UK decision-making
+<4>Don’t want any of these
+
+
+
+
+[fairShareGrid]{grid width=100} Would you say that each of these gets more or less its fair share of UK government spending?
+-[engFairShare] England
+-[scotFairShare] Scotland
+-[walesFairShare] Wales
+-[londonFairShare] London
+<1> Much less than its fair share
+<2> A little less than its fair share
+<3> More or less its fair share
+<4> A little more than its fair share
+<5> Much more than its fair share
+<99> Don't know
+
+
+
+
+# OUTCOMES OF INDEPENDENCE #
+
+{page certaintyScotPage}
+<<style>
+th:nth-child(2){ visibility:hidden;}
+td:nth-child(2){ visibility:hidden;}
+th:nth-child(7){ visibility:hidden;}
+td:nth-child(7){ visibility:hidden;}
+th:nth-child(1){ width:350px;}
+td:nth-child(1){ width:350px;}
+th:nth-child(2){ max-width:10px;}
+td:nth-child(2){ max-width:10px;}
+th:nth-child(7){ max-width:10px;}
+td:nth-child(7){ max-width:10px;}
+</style>>
+[certaintyScotIndepUnion]{grid width=100 roworder=randomize} How sure are you about what would happen to Scotland if it became independent or if it stayed in the United Kingdom?
+-[certaintyScotIndependence] If Scotland became independent
+-[certaintyScotUnion] If Scotland stayed in the UK
+<222>
+<1> I am very unsure what would happen
+<2> I am quite unsure what would happen
+<3> I am quite sure what would happen
+<4> I am very sure what would happen
+<98>
+<99> Don't know
+{end page certaintyScotPage}
+
+
+[independenceRisks]{grid roworder=randomize displaymax=5} If Scotland becomes independent, how likely do you think it is that…?
+-[scotIndepEconomy] The general economic situation in Scotland would be worse
+-[cooperateRUKGBP] Scotland would keep using the pound
+-[scotIndepJoinEU] Scotland would be able to retain membership of the EU on similar terms 
+-[scotIndepVoice] Scotland would have a weaker voice in the world
+-[scotIndepInequality] The gap between rich and poor would become smaller  
+-[scotIndepNavy] The UK government would stop ordering naval ships from Scotland
+-[scotIndepBorders] There would be passport and border controls between Scotland and England
+-[scotIndepDefenceCoop] Scotland and the UK would arrange defence cooperation
+-[scotIndepBBC] Scotland would continue to contribute to and access services of the BBC
+-[scotIndepMeBetterOff] I personally would be better off
+<1>Very likely
+<2>Likely
+<3>Neither likely nor unlikely
+<4>Unlikely
+<5>Very unlikely
+
+
+[unionRisks]{grid} And if Scotland remains within the UK, how likely do you think it is that…
+-[unionBudgetCuts] A UK government would cut the spending available for Scottish public services
+-[unionInequality] The gap between rich and poor would get wider
+-[unionMorePowers] Westminster will transfer substantially more powers to the Scottish Parliament
+-[unionEULeave] The UK will vote in a referendum to leave the European Union
+-[unionTridentStay] Trident submarines would remain based at Faslane on the Clyde
+-[unionBenefitsDown] Welfare benefits will go down
+<1>Very likely
+<2>Likely
+<3>Neither likely nor unlikely
+<4>Unlikely
+<5>Very unlikely
+
+
+Here are three possible options for Scotland:
+<<ol><li>No change; </li><li> ‘Devo max’ (Scotland remains part of the United Kingdom but the Scottish Parliament makes decisions in most domestic matters); and </li><li> Independence.  </li></ol>>
+
+[confidentOptions] {grid}How confident or worried would each of those make you for Scotland’s future?  
+-[confidentStatusquo] No change
+-[confidentMorepowers] ‘Devolution max’
+-[confidentIndep] Independence
+<1>Very confident
+<2>Quite confident
+<3>Neither confident nor worried
+<4>Quite worried
+<5>Very worried
+
+
+[euGoodThing]{single} Thinking about the European Union, do you think membership in the EU is generally a good thing or a bad thing?
+<1> Generally a good thing
+<2> Generally a bad thing
+<99> Don’t know
+
+[euLeaving]{single} And which result in the Scottish referendum on 18th September do you think makes it more likely that Scotland would end up outside the EU: a ‘Yes’ or a ‘No’?
+<1> A ‘Yes’ vote
+<2> A ‘No’ vote
+<3> Neither – it won’t make any difference 
+<99> Don’t know
+
+
+# REACTIONS #
+
+[argumentsYes]{grid roworder=randomize} Even those who strongly support one side might sometimes think that the other side makes some valid points.  First, here are some arguments made by the ‘Yes’ campaign.  Leaving aside for a moment whether you will vote that way, how convincing would you say is each of these arguments? 
+-[yesDiffValues] Scottish political values are different from those in the rest of the UK
+-[yesIndepNation] Independence is the natural state of nations like Scotland
+-[yesRoleWorld] Scotland should be free to shape its own role in the world
+-[yesWrongGovts] Without independence, Scotland will keep on getting governments it hasn’t voted for
+-[yesCloserCitizens] Scottish problems are bound to be better understood in Edinburgh than in London
+<111> 0 – Not at all convincing
+<1> 1
+<2> 2
+<3> 3
+<4> 4
+<5> 5
+<6> 6 – Extremely convincing
+<99>Don’t know
+
+[argumentsNo]{grid roworder=randomize} Now here are some arguments made by the ‘No’ campaign.  Again leaving aside whether you will vote that way, how convincing would you say is each of these arguments? 
+-[noWorkTogether] Nations are stronger when they work together rather than going it alone
+-[noKnownUnknowns] There are too many unanswered questions about what an independent Scotland would look like
+-[noOilDepend] An independent Scotland would be too reliant on oil
+-[noMonetaryPolicy] For as long as Scotland uses the pound and the Bank of England sets its interest rates, it won’t really be independent 
+-[noMorePowers] Further devolution will give Scotland more autonomy without the risks of separation
+<111> 0 – Not at all convincing
+<1> 1
+<2> 2
+<3> 3
+<4> 4
+<5> 5
+<6> 6 – Extremely convincing
+<99>Don’t know
+
+
+[yesChangeMind if (scotReferendumIntention==1 or scotReferendumLeaning ==1)]{multiple} Earlier you said that you are planning to vote ‘Yes’ in the upcoming referendum.  Would any of the following lead you to change your mind?  Please select any of the following that would tempt you to switch to ‘No’ or, if none of these would change your mind, choose that option.
+<1> If the UK government agreed to devolve full taxation powers to the Scottish Parliament
+<2> If the UK government agreed to relocate Trident outside Scottish waters
+<3> If it became clear that an independent Scotland would not be able to use the pound  
+<4> If the UK government gave the Scottish Parliament control over all revenues from oil in Scotland’s offshore waters
+<8> Something else (please write in) [yesChangeMindo]{open}
+<111 xor> None of these 
+
+
+[noChangeMind if (scotReferendumIntention==2 or scotReferendumLeaning ==2)]{multiple} Earlier you said that you are planning to vote ‘No’ in the upcoming referendum.  Would any of the following lead you to change your mind?  Please select any of the following that would tempt you to switch to ‘Yes’ or, if none of these would change your mind, choose that option.
+<1> If there were no plans for further devolution to Scotland
+<2> If it looked increasingly likely that the Conservatives would win the 2015 UK general election
+<3> If the UK government agreed to a currency union with an independent Scotland 
+<4> If opinion polls suggested strongly that the UK would vote to leave the European Union
+<8> Something else (please write in) [noChangeMindo]{open}
+<111 xor> None of these 
+
+
+
+# MISC. POLITICAL VARIABLES #
+
+[instTrust]{grid roworder=randomize} On a scale from 0 (‘No trust’) to 10 (‘A great deal of trust’), how much do you personally trust each of the following institutions? 
+-[scotParlTrust] Scottish Parliament
+-[ukParlTrust] UK Parliament
+-[scotPartiesTrust] The parties at Holyrood generally
+-[ukPartiesTrust] The parties at Westminster generally
+-[politiciansTrust] Politicians in general
+-[mediatrustmediatrust] The BBC
+-[localGovTrust] Local government
+<111> 0 – No trust
+<1> 1
+<2> 2
+<3> 3
+<4> 4
+<5> 5
+<6> 6
+<7> 7
+<8> 8
+<9> 9
+<10> 10 – A great deal of trust
+<99> Don’t know
+
+
+{page leftRightSelf}
+
+ [leftRight]{scale 0 10 dk = 1 dk_text="Don't know"} In politics people sometimes talk of left and right. Where would you place yourself on the following scale? 
+ -[leftrightResponse] Left | Right
+
+{end page leftRightSelf}
+
+
+{page splits1}
+{
+split = random(1,2)
+}
+{end page splits1}
+
+
+ [lrCountries if split==1]{grid roworder=randomize width=25} And where would you place the following on this similar scale?
+-[lrScotland] Scotland
+-[lrEngland] England
+-[lrEurope] Europe
+<111> 0 - Left
+<1> 1
+<2> 2
+<3> 3
+<4> 4
+<5> 5
+<6> 6
+<7> 7
+<8> 8
+<9> 9
+<10> 10 – Right
+<99> Don’t know
+
+
+[lrPeoples if split==2]{grid roworder=randomize width=25} And where would you place the following on this similar scale?
+-[lrScots] The average Scottish person
+-[lrEnglish] The average English person
+<111> 0 - Left
+<1> 1
+<2> 2
+<3> 3
+<4> 4
+<5> 5
+<6> 6
+<7> 7
+<8> 8
+<9> 9
+<10> 10 – Right
+<99> Don’t know
+
+
+{page approvalRatingPage}
+
+[approvePerf]{grid roworder=randomize} How far do you approve or disapprove of the job that the following are doing? 
+-[approveUKGovt] The UK government
+-[approveLabUK] The Labour opposition at Westminster
+-[approveScotGovt] The Scottish government
+-[approveYes] The Yes Scotland campaign
+-[approveNo] Better Together campaign
+<1> Strongly disapprove
+<2> Disapprove
+<3> Neither approve nor disapprove
+<4> Approve
+<5> Strongly approve
+<99><<span style="color:FireBrick">Don't know</span>>
+{end page approvalRatingPage}
+
+
+
+[leaderLike]{grid width=25 roworder=randomize} How much do you like or dislike each of the following political figures?  (If you come across any that you don’t recognise, just choose “Don’t know”.)
+-[likeCameron] David Cameron
+-[likeDarling] Alistair Darling
+-[likeSalmond] Alex Salmond
+-[likeSturgeon] Nicola Sturgeon
+-[likeFarage] Nigel Farage
+-[likeBrown] Gordon Brown
+-[likeOsborne] George Osborne
+-[likeCarmichael] Alistair Carmichael
+<111> 0 - dislike a lot
+<1> 1
+<2> 2
+<3> 3
+<4> 4
+<5> 5
+<6> 6
+<7> 7
+<8> 8
+<9> 9
+<10> 10 - like a lot
+<99> Don’t know
+
+[salmondViews]{grid width=25 roworder=randomize} And thinking now specifically about Alex Salmond, how good or bad a job do you think he has done or would do in each of these roles?
+-[salmondFM] As First Minister of Scotland
+-[salmondYes] As leader of the ‘Yes’ campaign
+-[salmondPM] As potentially the Prime Minister of an independent Scotland
+<111> 0 – Very bad job
+<1> 1
+<2> 2
+<3> 3
+<4> 4
+<5> 5
+<6> 6
+<7> 7
+<8> 8
+<9> 9
+<10> 10 – Very good job
+<99> Don’t know
+
+
+
+{page splits2}
+{
+splits = random(1,2)
+}
+{end page splits2}
+
+{module one if splits==1}
+
+[pIDUK1yn]{single}Some people think of themselves as usually being a supporter of one political party rather than another (even if they might vote for a different party from time to time). Thinking about _UK politics at Westminster_, do you usually think of yourself as being a supporter of one particular party or not?
+<1>  Yes, I do
+<2>  No, I do not
+
+[pIDUK1 if pIDUK1yn==1 ]Which party is that?
+<1> Labour
+<2> Conservative
+<3> Liberal Democrat
+<4> Scottish National Party
+<5> Green Party
+<6> UK Independence Party
+<7> Other [pIDUK1o]{open}
+
+[pIDSco2yn]{single}Thinking now about _Scottish politics at Holyrood_, do you usually think of yourself as being a supporter of one particular party or not?
+<1>  Yes, I do
+<2>  No, I do not
+
+[pIDSco2 if pIDSco2yn==1]Which party is that?
+<1> Labour
+<2> Conservative
+<3> Liberal Democrat
+<4> Scottish National Party
+<5> Green Party
+<6> UK Independence Party
+<7> Other [pIDSco2o]{open}
+
+{end module one}
+
+{module two if splits==2}
+
+[pIDSco1yn]{single}Some people think of themselves as usually being a supporter of one political party rather than another (even if they might vote for a different party from time to time). Thinking about _Scottish politics at Holyrood_, do you usually think of yourself as being a supporter of one particular party or not?
+<1>  Yes, I do
+<2>  No, I do not
+
+[pIDSco1 if pIDSco1yn==1]Which party is that?
+<1> Labour
+<2> Conservative
+<3> Liberal Democrat
+<4> Scottish National Party
+<5> Green Party
+<6> UK Independence Party
+<7> Other [pIDSco1o]{open}
+
+[pIDUK2yn]{single}Thinking now about _UK politics at Westminster_, do you usually think of yourself as being a supporter of one particular party or not?
+<1>  Yes, I do
+<2>  No, I do not
+
+[pIDUK2 if pIDUK2yn==1 ]Which party is that?
+<1> Labour
+<2> Conservative
+<3> Liberal Democrat
+<4> Scottish National Party
+<5> Green Party
+<6> UK Independence Party
+<7> Other [pIDUK2o]{open}
+
+{end module two}
+# TURNOUT-RELATED STUFF #
+
+[elecStakes]{grid roworder=randomize} People disagree about how important are different types of election.  How much of a difference do you think it makes who wins the following?
+-[scotElecStakes] Elections to the Scottish Parliament
+-[genElecStakes] General elections to the UK House of Commons
+-[localElecStakes] Elections to local councils
+-[euroElecStakes] Elections to the European Parliament
+-[refElecStakes] The 2014 referendum on Scottish independence
+<1>A great deal
+<2>Quite a lot
+<3>Some
+<4>Not very much
+<5>None at all
+<6>Don’t know
+
+
+ [elecDuty]{grid roworder=randomize} Some people feel that citizens have a duty to vote in each election.  Others disagree, and think that citizens should choose each time whether to vote depending on whether they care who wins.  For each of these, how far do you agree or disagree that there is a duty to vote?
+-[scotElecDuty] Elections to the Scottish Parliament
+-[genElecDuty] General elections to the UK House of Commons
+-[localElecDuty] Elections to local councils elections
+-[euroElecDuty] Elections to the European Parliament
+-[refElecDuty] The Referendum on Scottish independence
+<1>Agree strongly
+<2>Agree somewhat
+<3>Neither agree nor disagree
+<4>Disagree somewhat
+<5>Disagree strongly
+
+
+{page satDemPage}
+<<style>
+th:nth-child(2){ visibility:hidden;}
+td:nth-child(2){ visibility:hidden;}
+th:nth-child(7){ visibility:hidden;}
+td:nth-child(7){ visibility:hidden;}
+th:nth-child(1){ width:450px;}
+td:nth-child(1){ width:450px;}
+th:nth-child(2){ max-width:10px;}
+td:nth-child(2){ max-width:10px;}
+th:nth-child(7){ max-width:10px;}
+td:nth-child(7){ max-width:10px;}
+</style>>
+[satDem]{grid width=100} On the whole, how satisfied or dissatisfied are you with the way that democracy works in:
+-[satDemUK] The UK as a whole
+-[satDemScot] Scotland
+-[satDemEU] The European Union
+<222>
+<1> Very dissatisfied
+<2> A little dissatisfied
+<3> Fairly satisfied
+<4> Very satisfied
+<98>
+<99> Don't know
+{end page satDemPage}
+
+
+
+# CAMPAIGN #
+
+[campaignAssess]{grid roworder=randomize displaymax=5}To what extent do you agree or disagree with the following statements? 
+-[debateDifficult] The independence debate is so complicated, I can’t make much sense of it
+-[campaignsTruth] I’m not convinced either campaign side has been telling the whole truth about the consequences of independence
+-[conseqestimation] I’m not sure either campaign can accurately estimate the true consequences of independence
+-[ScotEmpwr] The independence debate is giving ordinary people a say in Scotland's future.
+-[RefEngage] For the first time in a long time I’m paying attention to politics because of the referendum campaign
+-[refUnder18] It was a good idea to allow 16- and 17-year-olds to vote in the referendum
+-[refFairness] Both sides of the referendum debate have had a fair chance to present their point of view
+-[refImportant] This Independence referendum is more important than any other vote in Scotland in the last fifty years
+-[otherSide] Although I’m on one side of the debate, I must admit that the other side has some strong points
+<1>Strongly agree
+<2>Agree
+<3>Neither agree nor disagree
+<4>Disagree
+<5>Strongly disagree
+
+[efficGeneral]{grid roworder=randomize}And to what extent do you agree or disagree with these statements? 
+-[efficDontCare]Politicians don’t care much about what people like me think.
+-[efficNoSay]People like me don’t have any say about what the government does
+-[efficComplicated]Sometimes politics and government seem so complicated that a person like me can’t really understand what’s going on
+<1>Strongly agree
+<2>Agree
+<3>Neither agree nor disagree
+<4>Disagree
+<5>Strongly disagree
+
+
+{page splits3}
+{
+spliter = random(1,2)
+}
+{end page splits3}
+
+{module three if spliter==1}
+
+[polPartic1]{grid} Some people are heavily involved in politics; others have too many other things going on.  Over the past few years, how often have you done the following in relation to any issue _except_ the referendum? 
+-[discussPolFamily1] Discuss politics with family and friends
+-[discussPolOnline1] Discuss politics via social media or online forums
+-[readPol1] Read about politics in newspapers or magazines
+-[attendPol1] Attend public meetings
+-[campaignPol1] Get involved in grassroots campaigning
+<1>  Very often
+<2>  Fairly often
+<3>  Not very often
+<4>  Not at all
+
+
+[refPartic2]{grid} Now thinking specifically about the referendum issue, how often have you done the following?
+-[discussRefFamily2] Discussed the referendum with family and friends
+-[discussRefOnline2] Discussed the referendum via social media or online forums
+-[readRef2] Read about the referendum in newspapers or magazines
+-[attendRef2] Attended public meetings about the referendum
+-[campaignRef2] Get involved in grassroots referendum campaigning
+<1>  Very often
+<2>  Fairly often
+<3>  Not very often
+<4>  Not at all
+
+{end module three}
+
+{module four if spliter==2}
+
+
+[refPartic1]{grid} Some people are heavily involved in politics; others have too many other things going on.  First, thinking specifically about the referendum issue, how often have you done the following?
+-[discussRefFamily1] Discussed the referendum with family and friends
+-[discussRefOnline1] Discussed the referendum via social media or online forums
+-[readRef1] Read about the referendum in newspapers or magazines
+-[attendRef1] Attended public meetings about the referendum
+-[campaignRef1] Get involved in grassroots referendum campaigning
+<1>  Very often
+<2>  Fairly often
+<3>  Not very often
+<4>  Not at all
+
+
+[polPartic2]{grid} And, over the past few years, how often have you done the following in relation to any issue _except_ the referendum?
+-[discussPolFamily2] Discuss politics with family and friends
+-[discussPolOnline2] Discuss politics via social media or online forums
+-[readPol2] Read about politics in newspapers or magazines
+-[attendPol2] Attend public meetings
+-[campaignPol2] Get involved in grassroots campaigning
+<1>  Very often
+<2>  Fairly often
+<3>  Not very often
+<4>  Not at all
+
+{end module four}
+
+
+[refActivities]{multiple} Which, if any, of the following have you done during the (long) run-up to this referendum? *Please tick all that apply.*
+<1> Tried to persuade family, friends or colleagues to vote Yes or No
+<2> Registered online as a supporter of ‘Better Together’ or ‘Yes Scotland’
+<3> Signed up to the ‘Yes’ Declaration of Support for Independence
+<4> Displayed a poster
+<5> Attended a public meeting/speaker event
+<6> Joined a local campaign group
+<7> Delivered leaflets or canvassed voters
+<8> Joined a political party
+<111 xor> None of these 
+
+
+[refClimate]{single} This question is about the effect of the referendum campaign on the Scottish public’s involvement and interest in politics.  Which of these statements best describes your own situation?
+<1> I haven’t noticed it making any difference to anyone
+<2> I’ve noticed others getting more involved but it hasn’t made any difference to me
+<3> It’s got me a bit more involved
+<4> It’s got me a lot more involved 
+
+[refClimateFuture if refClimate in [3,4]]{grid roworder=randomize} And what do you think will happen to levels of political involvement – both your own and in the Scottish public as a whole – once the referendum is over?
+-[refClimateFutSelf] Yourself
+-[refClimateFutScot] The Scottish public
+<1>  Will stay more involved
+<2>  Will go back to normal
+<99> Don’t know
+
+
+[refContact] Has anyone campaigning in the referendum contacted you during the past four weeks?
+<1> No 
+<2> Yes
+<3> Don't know
+
+[refContactWho if refContact==2] {multiple} Could you indicate which campaigning organizations or parties have contacted you during the past four weeks? *Please select all that apply*.
+<1> Better Together 
+<2> Yes Scotland
+<3> Scottish National Party
+<4> Scottish Labour Party
+<5> Scottish Liberal Democrats
+<6> Scottish Conservative Party
+<7> Scottish Green Party
+<8> Any other organization campaigning *for* independence
+<9> Any other organization campaigning *against* independence
+<111 xor> None of these 
+
+{module rongrid order=randomize if refContactWho.has_any([1,2,3,4,5,6,7,8,9])}
+
+[refcontactBT if 1 in refContactWho] {multiple order=randomize} Could you indicate all the ways that you have been contacted by Better Together, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe1]{open}
+
+[refcontactYSa if 2 in refContactWho] {multiple order=randomize} Could you indicate all the ways that you have been contacted by Yes Scotland, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe2]{open}
+
+[refcontactSNP if 3 in refContactWho] {multiple order=randomize}  Could you indicate all the ways that you have been contacted by the Scottish National Party, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe3]{open}
+
+[refcontactSLP if 4 in refContactWho] {multiple order=randomize} Could you indicate all the ways that you have been contacted by the Scottish Labour Party, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe4]{open}
+
+[refcontactSLD if 5 in refContactWho] {multiple order=randomize}  Could you indicate all the ways that you have been contacted by the Scottish Liberal Democrats, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe5]{open}
+
+[refcontactSCP if 6 in refContactWho] {multiple order=randomize} Could you indicate all the ways that you have been contacted by the Scottish Conservative Party, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe6]{open}
+
+[refcontactSGP if 7 in refContactWho] {multiple order=randomize} Could you indicate all the ways that you have been contacted by the Scottish Green Party, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe7]{open}
+
+[refcontactothfor if 8 in refContactWho] {multiple order=randomize}  Could you indicate all the ways that you have been contacted by any other organization campaigning *for* independence, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe8]{open}
+
+[refcontactothag if 9 in refContactWho] {multiple order=randomize} Could you indicate all the ways that you have been contacted by any other organization campaigning *against* independence, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe9]{open}
+
+{end module rongrid}
+
+#[debateViewing] There will be two televised debates between Alistair Darling and Alex Salmond during this campaign: the first (on 5 August) on STV and the second (on 25 August) on BBC Scotland.  So far as you can remember, did you happen to see the first of these debates?
+#<1> Didn’t see the first one
+#<2> Saw the first one on STV
+#<3> Only saw the second one on BBC Scotland
+#<4> Saw both of them
+#<5> Can’t remember 
+
+[debateViewing] There have been two televised debates between Alistair Darling and Alex Salmond during this campaign: the first (on 5 August) on STV and the second (on 25 August) on BBC Scotland.  So far as you can remember, did you happen to see either, both or neither of these?
+<1> Didn’t see either of them
+<2> Only saw the first one on STV
+<3> Only saw the second one on BBC Scotland
+<4> Saw both of them
+<5> Can’t remember
+
+[debateHelp if debateViewing in[2,3,4]]{single} Which of these best describes any impact that the debates had on your choice?
+<1>Didn’t have any impact – my mind was already made up 
+<2>Made me think but didn’t change my mind
+<3>Got me seriously thinking about the other side
+<4>Changed my mind completely
+
+[debatePerf if debateViewing in[2,3,4]]{single} Based on what you saw, and leaving aside your personal preferences, who do you think won the debates?
+<1>Alistair Darling 
+<2>Alex Salmond
+<3>Too close to call
+<4>Can’t remember
+
+
+[fairConductRef]{grid roworder=randomize} How fairly or unfairly do you think the following have behaved during the referendum process?
+-[fairElecComm] The Electoral Commission
+-[fairBBC] The BBC
+-[fairYesCamp] The ‘Yes Scotland’ campaign
+-[fairNoCamp] The ‘Better Together’ campaign
+-[fairUKGovt] The UK government
+-[fairScotGovt] The Scottish government
+<1> Very fairly
+<2> Quite fairly
+<3> Neither fairly nor unfairly
+<4> Quite unfairly
+<5> Very unfairly
+<99> Don’t know
+
+
+
+# ‘SUBJECTIVE KNOWLEDGE’ #
+
+[subjKnowOverall]{single} On the whole, how well informed do you feel about the referendum?
+<1>I feel I know enough
+<2>I don’t know enough but that’s because you can’t really know with issues like this
+<3>I don’t know enough because the Yes and No campaigns have not provided enough information
+
+
+[subjKnowledge]{grid roworder=randomize} Sometimes in this campaign it has been hard to distinguish facts from opinions or guesses.  For each of the following, could you say whether you think it is a matter of _fact_ (that is, we can know the answer before the referendum – even if some people get it wrong) or whether you think it is a matter of _opinion_ (that is, we can only guess at this stage).
+-[subjKnowEU] Whether an independent Scotland would be an EU member
+-[subjKnowCurr] Whether an independent Scotland would retain the pound
+-[subjKnowQueen] Whether the Queen would remain Head of State of an independent Scotland
+-[subjKnowCurrind] Whether the average household would be better or worse off under independence
+-[subjKnowDevo] Whether more powers would be devolved to the Scottish Parliament after a ‘No’ vote
+-[subjKnowTrid] Whether Trident would be moved from Scottish waters after a ‘Yes’ vote
+<1> Completely a matter of fact
+<2> Mostly a matter of fact
+<3> Mostly a matter of opinion
+<4> Completely a matter of opinion
+
+
+
+[econPersonalRetro]{single} Finally, a few questions about you.  First, how does the *financial situation of your household* now compare with what it was 12 months ago?  Has it:
+<1> Got a lot worse
+<2> Got a little worse
+<3> Stayed the same
+<4> Got a little better
+<5> Got a lot better
+<99> Don't know
+
+[dependents]{multiple} Do you have day-to-day caring responsibilities for any of the following in your family? *Please tick all that apply.*
+<1> Pre-school aged children
+<2> School aged children
+<3> Sick, disabled or elderly adults
+<9 xor> None of the above
+
+[ajw2]What is your place of birth?
+<1>Scotland
+<2>England
+<3>Wales
+<4>Northern Ireland
+<5>Outside the UK
+
+{page natid}
+
+[nationalIdentities]{scale 1 7 dk = 1 dk_text="Don't know"} Where would you place yourself on these scales?
+-[britishness] Not at all British | Very strongly British
+[nationalIdentities2]{scale 1 7 dk = 1 dk_text="Don't know"} Where would you place yourself on these scales?
+-[scottishnessa] Not at all Scottish | Very strongly Scottish
+[nationalIdentities3]{scale 1 7 dk = 1 dk_text="Don't know"} Where would you place yourself on these scales?
+-[englishnessa] Not at all English | Very strongly English
+
+{end page natid}
+
+[scotBrit]{single} And which, if any, of the following best describes how you see yourself?
+<1>Scottish not British
+<2>More Scottish than British
+<3>Equally Scottish and British
+<4>More British than Scottish
+<5>British not Scottish
+<6>Other description (please write in) [scotBrito]{open}
+<7>Don't know
+
+[socialTrustScale]{scale 0 10 dk = 1 dk_text="Don't know"} Generally speaking, would you say that most people can be trusted, or that you can't be too careful in dealing with people? Please answer on the following scale.
+-[socialTrust] You can’t be too careful | Most people can be trusted
+
+
+[riskscale]{grid roworder=randomize} Now here is a scale where 0 means “unwilling to take risks” and 10 means “fully prepared to take risks”.  How willing are you to take risks:
+-[riskGeneral] In general?
+-[riskFinancial] In financial matters?  
+<111> 0 – Unwilling to take risks
+<1> 1
+<2> 2
+<3> 3
+<4> 4
+<5> 5
+<6> 6
+<7> 7
+<8> 8
+<9> 9
+<10> 10 – Fully prepared to take risks
+<99> Don’t know
+
+
+[impatienceScale]{scale 0 10 dk = 1 dk_text="Don't know"} In general, how patient or impatient would you say that you are?
+-[impatience] Very impatient | Very patient
+
+
+{page splits4}
+{
+spliting = random(1,2)
+}
+{end page splits4}
+
+{module seven if spliting ==1}
+
+[lottery]Imagine that you win £1,000 in a lottery. Almost immediately after you collect, you receive the following financial offer from a reputable bank, the conditions of which are as follows: you have a 50% chance of doubling your money within two years; but you have a 50% chance of losing half of whatever you invest. How much of the £1,000 would you choose to invest?
+<1>£0
+<2>£200
+<3>£400
+<4>£600
+<5>£800 
+<6>£1,000
+
+{end module seven}
+
+{module eight if spliting ==2}
+
+[lottery2]Imagine that you have £1,000 of savings. You receive the following financial offer from a reputable bank, the conditions of which are as follows: a 50% chance of doubling your money within two years; but a 50% chance of losing half of whatever you invest. How much of the £1,000 would you choose to invest?
+<1>£0
+<2>£200
+<3>£400
+<4>£600
+<5>£800 
+<6>£1,000
+
+{end module eight}
+
+
+[RelAttendance]{single}  Apart from such special occasions as weddings and funerals, how often do you attend religious services nowadays?
+<1> Once a week or more
+<2> At least once a month
+<3> At least twice a year
+<4> At least once a year
+<5> Never or practically never
+
+
+[ParentsPOB]{grid} In what country were each of your parents born?
+-[MotherPOB] Your mother
+-[FatherPOB] Your father
+<1> Scotland
+<2> England 
+<3> Northern Ireland 
+<4> Republic of Ireland
+<5> Wales 
+<7> Other 
+<99> Don't know
+
+[mumpob if MotherPOB==7]{open} Where was your mother born?
+[dadpob if FatherPOB==7]{open} Where was your father born?
+
+[RGoAbroad]{single} Roughly how often do you travel outside the UK, either for business or on holiday?
+<1> Several times a year
+<2> Once or twice a year
+<3> Once every few years
+<4> Less often than that
+<5> Never or practically never
+
+
+[RLiveAbroad]{single} Have you ever lived outside Scotland for a period of three months or longer?
+<1> Yes 
+<2> No 
+
+[RLiveAbroadWhere if RLiveAbroad==1]{multiple} And where was that?  *Please tick all that apply.*
+<1> England
+<2> Northern Ireland 
+<3> Republic of Ireland
+<4> Wales 
+<5> Somewhere else in the European Union [rlo1]{open prompt= "please specify"}
+<6> Somewhere outside the European Union [rl02]{open prompt= "please specify"}
+
+[RLiveAbroadLong if RLiveAbroad==1]{single} For how long in total have you lived outside Scotland?
+<1> Less than 6 months
+<2> Between 6 months and 1 year
+<3> Between 1 and 5 years
+<4> More than 5 years 
+
+
+[prolificResp]{single} Finally, in the past 12 months, roughly how often would you say that you have completed polls or surveys that included questions on politics?
+<1> This is the first
+<2> Only once or twice
+<3> Once every two or three months
+<4> Around once a month
+<5> More often than that
+
+[profile_newspaper_readership_pdl]{single}Which daily newspaper do you read most often?
+<1> The Express
+<2> The Daily Mail / The Scottish Daily Mail
+<3> The Mirror / Daily Record
+<4> The Daily Star / The Daily Star of Scotland
+<5> The Sun
+<6> The Daily Telegraph
+<7> The Financial Times
+<8> The Guardian
+<9> The Independent
+<10> The Times
+<11> The Scotsman
+<12> The Herald (Glasgow)
+<13> The Western Mail
+<17> Metro
+<14> Other local daily morning newspaper
+<15> Other Newspaper
+<16> None 

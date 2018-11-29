@@ -1,0 +1,407 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 TimesNewRomanPSMT;}
+{\colortbl;\red255\green255\blue255;\red255\green0\blue0;\red0\green0\blue255;}
+{\*\expandedcolortbl;;\csgenericrgb\c100000\c0\c0;\csgenericrgb\c0\c0\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\ri-340\partightenfactor0
+
+\f0\b\fs22 \cf0 Scottish Referendum Study Wave 3\
+\
+\
+\pard\pardeftab720\ri-340\partightenfactor0
+
+\b0 \cf0 [polInterestW3]\{grid roworder=randomize\}Some people are more interested in politics than others.  On this scale, please could you tell us how interested you are in:\
+-[polInterestUK] UK politics in general\
+-[polInterestScot] Scottish politics in general\
+<111> 0 \'96 Not at all interested\
+<1> 1\
+<2> 2\
+<3> 3\
+<4> 4\
+<5> 5\
+<6> 6\
+<7> 7\
+<8> 8\
+<9> 9\
+<10> 10 \'96 Extremely interested\
+<98>\
+<99 /"Don't know">\
+\
+\
+[scotReferendumVoteW3]\{single\} How did you vote in the independence referendum on 18 September 2014?\
+<1> I voted "Yes" (Scotland should be an independent country)\
+<2> I voted "No" (Scotland should not be an independent country)\
+<3> I didn\'92t vote\
+<4> I can\'92t remember how I voted\
+\
+\
+[refThinkingW3] \{scale 0 10\} Some people really enjoyed thinking about the referendum issue, and whether and how to vote.  Other people didn\'92t enjoy that aspect of the referendum as much.  On this scale, which number best describes how you felt? 
+\f1 \
+
+\f0 -[refThinkingResp] Really didn\'92t enjoy thinking about it | Really enjoyed thinking about it\uc0\u8232 \
+\
+[refFamilyW3]\{scale 0 10\} Many people discussed the referendum issue quite a lot with their family and friends.  On the following scale, where 0 is \'93virtually all of my family and friends were \'91Yes\'92 supporters\'94 and 10 is \'93virtually all were \'91No\'92 supporters\'94, which number best describes your situation?\uc0\u8232 -[refFamilyResp] Virtually all \'91Yes\'92 supporters | Virtually all \'91No\'92 supporters\
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf2 \
+\
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf0 [refFamilyTensionW3]\{single\} And some people have reported falling out with some family or close friends over the referendum issue.  How about you?\uc0\u8232 <1>Yes, a serious falling out\
+<2>Yes, but not a serious falling out\uc0\u8232 <3>No, there was no problem like this\
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf2 \
+\
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf0 [refFamilyResolveW3 if refFamilyTensionW3 in [1,2]]\{single\} How are things with those friends and family now?\uc0\u8232 <1>Entirely back to normal\
+<2>Almost back to normal\uc0\u8232 <3>Still not back to normal\
+\
+\
+[regretsRefVoteW3 if scotReferendumVoteW3 !=3]\{single\} Do you have any regrets about how you voted in the independence referendum?\
+<1> Yes\
+<2> No\
+<99> Don't know\
+\pard\pardeftab720\ri-340\partightenfactor0
+
+\i\b \cf0 \
+\pard\pardeftab720\ri-340\partightenfactor0
+
+\i0\b0 \cf0 [happyScotIndepResultNoW3]\{scale 0 10 dk=1 dk_text="Don't know"\} Looking back, how happy or how disappointed are you that the "No" side won the referendum?\
+-[happyScotIndepResultNoScaleW3] Extremely disappointed |  Extremely happy\
+\
+[emotScotIndepW3]\{gridroworder=randomize\}  And, on a similar scale from 0 to 10, could you say how much you feel each of these when you look back on Scotland\'92s vote to remain in the UK?\uc0\u8232 -[emotScotIndepFearW3] Afraid\u8232 -[emotScotIndepExciteW3] Excited\
+-[emotScotIndepReliefW3] Relieved\uc0\u8232 -[emotScotIndepAngryW3] Angry\u8232 -[emotScotIndepHopeW3] Hopeful\u8232 <111> 0 \'96 Not at all\u8232 <1> 1\
+<2> 2\
+<3> 3\
+<4> 4\
+<5> 5\
+<6> 6\
+<7> 7\
+<8> 8\
+<9> 9\
+<10> 10 \'96 Extremely\
+\
+ \
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf3 \
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf0 \
+ [dutyToVoteW3]\{grid roworder=randomize\}To what extent do you agree or disagree with these two statements? \
+-[dutyToVote22W3] It is every citizen's duty to vote in an election\
+-[dutyToVoteRef2W3] It was every citizen\'92s duty to vote in the Scottish independence referendum\
+\pard\tx2268\pardeftab720\ri-340\partightenfactor0
+\cf0 <1>Strongly agree	\
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf0 <2>Agree\
+<3>Neither agree nor disagree\
+<4>Disagree\
+<5>Strongly disagree\
+\
+\
+\{page splits1\}\
+\{\
+split = random(1,2)\
+\}\
+\{end page splits1\}\
+\
+[efficGeneralScotW3 if split==1]\{grid roworder=randomize width=25\} Now, thinking specifically about 
+\b Scottish politics at Holyrood
+\b0 , to what extent do you agree or disagree with these statements? \
+-[efficDontCareScotW3] Politicians don\'92t care much about what people like me think\
+-[efficNoSayScotW3] People like me don\'92t have any say about what the government does\
+-[efficComplicatedScotW3] Sometimes politics and government seem so complicated that a person like me can\'92t really understand what\'92s going on\
+\pard\tx2268\pardeftab720\ri-340\partightenfactor0
+\cf0 <1>Strongly agree	\
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf0 <2>Agree\
+<3>Neither agree nor disagree\
+<4>Disagree\
+<5>Strongly disagree\
+\
+[efficGeneralUKW3 if split==2]\{grid roworder=randomize width=25\} Now, thinking specifically about 
+\b UK politics at Westminster
+\b0 , to what extent do you agree or disagree with these statements? \
+-[efficDontCareUKW3] Politicians don\'92t care much about what people like me think\
+-[efficNoSayUKW3] People like me don\'92t have any say about what the government does\
+-[efficComplicatedUKW3] Sometimes politics and government seem so complicated that a person like me can\'92t really understand what\'92s going on\
+\pard\tx2268\pardeftab720\ri-340\partightenfactor0
+\cf0 <1>Strongly agree	\
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf0 <2>Agree\
+<3>Neither agree nor disagree\
+<4>Disagree\
+<5>Strongly disagree\
+\
+\pard\pardeftab720\ri-340\partightenfactor0
+
+\f1 \cf0 \
+\{
+\f0 page satDemW3\}\
+\
+[satDemW3]\{grid width=100\} On the whole, how satisfied or dissatisfied are you with the way that democracy works in:\
+-[satDemUKW3] The UK as a whole\
+-[satDemScotW3] Scotland\
+<1> Very dissatisfied\
+<2> A little dissatisfied\
+<3> Fairly satisfied\
+<4> Very satisfied\
+<98>\
+<99> Don't know\
+\{end page satDemPage\}\
+\
+\
+\
+\pard\pardeftab720\ri-340\partightenfactor0
+
+\fs21 \cf0 \
+[expMorePowersW3]\{single\} 
+\fs22 Following the "No" vote in 2014, which of the following do you think is the most likely outcome?  (Here, we are asking about what you think *will* happen, regardless of what you think *should* happen.)\
+<1>No change to the relationship between Westminster and the Scottish Parliament beyond what is currently being proposed by the UK Government\
+<2> More powers, on top of those currently being proposed by the UK Government\
+<3> A second referendum on independence\
+<4> Don\'92t know\
+\
+\
+\
+[constOptionsW3]\{grid\} Some people have more than one preference for how Scotland could be run in the future. Please assess how appealing each of the following options is to you. The scale runs from 0 to 10 where 0 is not at all appealing to me and 10 is very appealing to me:\
+-[constIndepW3] Scotland should be an independent country\
+-[constDevomaxW3] Scotland should remain within the UK but the Scottish Parliament should have more powers\
+-[constStatusquoW3] Scotland should remain within the UK and the Scottish Parliament should have the same powers as it has right now\
+<111> 0 \'96 Not at all appealing\
+<1> 1\
+<2> 2\
+<3> 3\
+<4> 4\
+<5> 5\
+<6> 6\
+<7> 7\
+<8> 8\
+<9> 9\
+<10> 10 \'96 Very appealing to me\
+<98>\
+<99 /"Don't know">\
+\
+\
+[whoGovernsW3]\{grid\} The following questions are about the balance of powers between the UK government at Westminster and the Scottish Government at Holyrood.  Think of a scale that runs from 0 (Westminster has all the powers) to 10 (Holyrood has all the powers).  Choose a number that best describes each of the following situations?\
+-[whoGovernsNowW3] Where Scotland is now\
+-[whoGovernsOughtW3]Where you would ideally like Scotland to be\
+-[whogovernsNo10W3] Where Scotland will be in ten years?\
+<111> 0 \'96 Westminster has all the powers\
+<1> 1\
+<2> 2\
+<3> 3\
+<4> 4\
+<5> 5\
+<6> 6\
+<7> 7\
+<8> 8\
+<9> 9\
+<10> 10 \'96 Holyrood has all the powers\
+<98>\
+<99 /"Don't know">\
+\
+\
+[argumentsYesW3]\{grid roworder=randomize\} In the referendum, even those who strongly supported one side might sometimes have thought that the other made some valid points.  First, here are some arguments made by the \'91Yes\'92 campaign.  Leaving aside for a moment how you voted, how convincing would you say is each of these arguments? \
+-[yesDiffValuesW3] Scottish political values are different from those in the rest of the UK\
+-[yesIndepNationW3] Independence is the natural state of nations like Scotland\
+-[yesRoleWorldW3] Scotland should be free to shape its own role in the world\
+-[yesWrongGovtsW3] Without independence, Scotland will keep on getting governments it hasn\'92t voted for\
+-[yesCloserCitizensW3] Scottish problems are bound to be better understood in Edinburgh than in London\
+<111> 0 \'96 Not at all convincing\
+<1> 1\
+<2> 2\
+<3> 3\
+<4> 4\
+<5> 5\
+<6> 6 \'96 Extremely convincing\
+<98>\
+<99 /"Don't know">\
+\
+\
+[argumentsNoW3]\{grid roworder=randomize\} Now here are some arguments made by the \'91No\'92 campaign.  Again leaving aside how you voted, how convincing would you say is each of these arguments? \
+-[noWorkTogetherW3] Nations are stronger when they work together rather than going it alone\
+-[noKnownUnknownsW3] There are too many unanswered questions about what an independent Scotland would look like\
+-[noOilDependW3] An independent Scotland would be too reliant on oil\
+-[noMonetaryPolicyW3] For as long as Scotland uses the pound and the Bank of England sets its interest rates, it won\'92t really be independent \
+-[noMorePowersW3] Further devolution will give Scotland more autonomy without the risks of separation\
+<111> 0 \'96 Not at all convincing\
+<1> 1\
+<2> 2\
+<3> 3\
+<4> 4\
+<5> 5\
+<6> 6 \'96 Extremely convincing\
+<99>Don\'92t know\
+\
+\
+[campaignAssessW3]\{gridroworder=randomize\} To what extent do you agree or disagree with the following statements about the referendum? \
+-[debateDifficultW3] The independence debate was so complicated, I couldn\'92t make much sense of it\
+-[ScotEmpwrW3] The independence debate gave ordinary people a say in Scotland's future.\
+-[refUnder18W3] It was a good idea to allow 16- and 17-year-olds to vote in the referendum\
+-[refFairnessW3] Both sides of the referendum debate had a fair chance to present their point of view\
+-[refImportantW3] This Independence referendum was more important than any other vote in Scotland in the last fifty years\
+-[otherSideW3] Although I was on one side of the debate, I must admit that the other side had some strong points\
+\pard\pardeftab720\ri-340\sb40\partightenfactor0
+\cf0 <1>Strongly agree\
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf0 <2>Agree\
+<3>Neither agree nor disagree\
+<4>Disagree\
+<5>Strongly disagree\
+\
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf2 \
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf0 [polPartic2W3]\{grid\} Some people are heavily involved in politics; others have too many other things going on.  Thinking first about politics in general, how often have you done the following in the past year or so?\
+-[discussPolFamily2W3] Discussed politics with family and friends\
+-[discussPolOnline2W3] Discussed politics via social media or online forums\
+-[readPol2W3] Read about politics in newspapers or magazines\
+-[attendPol2W3] Attended public meetings \
+-[campaignPol2W3] Been involved in grassroots campaigning\
+<1>  Very often\
+<2>  Fairly often\
+<3>  Not very often\
+<4>  Not at all\
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf2 \
+\pard\pardeftab720\ri-340\partightenfactor0
+
+\f1 \cf0 \
+\pard\pardeftab720\ri-340\partightenfactor0
+
+\f0 \cf0 [refActivitiesW3]
+\f1 \{
+\f0 multiple\} Now thinking specifically about the issue of Scottish independence, which \'96 if any \'96 of the following have you done during the year since the referendum? *Please tick all that apply.*\
+<1> Tried to persuade family, friends or colleagues for or against independence
+\f1 \
+
+\f0 <2> Attended a public meeting/speaker event\
+<3> Joined a local campaign group\
+<4> Delivered leaflets or canvassed voters\
+<5> Joined a political party\
+<111 xor> None of these \
+\
+\
+[refClimateW3]\{single\} This question is about the effect of the referendum campaign on the Scottish public\'92s involvement and interest in politics.  Which of these statements best describes your own situation?\
+<1> I didn\'92t notice it making any difference to anyone\
+<2> I noticed others getting more involved but it didn\'92t make any difference to me\
+<3> It got me a bit more involved\
+<4> It got me a lot more involved \
+\
+[refClimateSinceW3 if refClimate in [3,4]\{grid roworder=randomize\} And, in the year since the referendum, what do you think happened to levels of political involvement \'96 both your own and in the Scottish public as a whole?\
+-[refClimateSinceSelfW3] Yourself\
+-[refClimateSinceScotW3] The Scottish public\
+<1>  Stayed more involved\
+<2>  Went back to normal\
+<99> Don\'92t know\
+ \
+[refClimateFutureW3 if refClimate in [3,4]\{grid roworder=randomize\} And finally \'96 what do you think will happen to these levels from now?\
+-[refClimateFutSelfW3] Yourself\
+-[refClimateFutScotW3] The Scottish public\
+<1>  Will stay more involved\
+<2>  Will go back to normal\
+<99> Don\'92t know\
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf2 \
+\
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf0 [referendumSettledOughtW3]\{single\} Do you think that there 
+\b should
+\b0  be another referendum on Scottish independence within the next ten years?\
+<1> Yes\
+<2> No\
+<99> Don't know\
+\
+[referendumSettledWillW3]\{single\} And do you think that there 
+\b will
+\b0  be another independence referendum within the next ten years?\
+<1> Yes\
+<2> No\
+<99> Don't know\
+\
+\
+[scotReferendumIntentionW3]\{single\}  If there was another referendum on Scottish independence, how do you think you would vote?\
+<1> I would vote "Yes" (leave the UK)\
+<2> I would vote "No" (stay in the UK)\
+<3> Would not vote\
+<99> Don't know \
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf2 \
+\
+\
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf0 [euRefVoteW3]\{single\} Now a few questions about the UK and the European Union.  In the planned referendum on the UK\'92s membership of the EU, how do you think that you will vote?\
+<1> I would vote for the UK to 
+\b leave
+\b0  the EU\
+<2> I would vote for the UK to 
+\b stay
+\b0  in the EU\
+<99>Don't know\
+<999> I wouldn\'92t vote\
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf2 \
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf0 [euRefConflictW3]\{single\} Some say that the UK should only leave the EU if all four nations \'96 England, Wales, Scotland and Northern Ireland \'96 vote for that.  Others say that the individual nations should not have a veto \'96 the UK should do what a majority of UK voters choose.  Now suppose that a majority of Scots vote to remain in the EU but a majority across the UK as a whole votes to leave.  What do you think should happen?\
+<1> The UK should stay in the EU because not all of its nations wanted to leave\
+<2> The UK should leave the EU because that was what a majority of voters chose\
+<99>Can\'92t choose\
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf2 \
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf0 [euRefDilemmaW3]\{single\} If the UK leaves the European Union, which of these would you prefer to see Scotland do?\
+<1> Remain in the UK outside the EU\
+<2> Become an independent nation within the EU\
+<3> Become an independent nation outside the EU\
+<99> Can\'92t choose\
+\
+\
+[nationalIdentitiesW3]\{scale 1 7 dk = 1 dk_text="Don't know"\} Now a few questions about you.  First, where would you place yourself on these scales?\
+-[britishnessW3] Not at all British | Very strongly British\
+-[scottishnessW3] Not at all Scottish | Very strongly Scottish\
+\
+\
+[lrPeoplesW3]\{grid width=25\} In politics people sometimes talk about left and right.  Where would you place the following on this similar scale?\
+-[lrScotsW3] The average Scottish person\
+-[lrEnglishW3] The average English person\
+-[lrSelfW3] Yourself\
+<222 fixed>\
+<111> 0 - Left\
+<1> 1\
+<2> 2\
+<3> 3\
+<4> 4\
+<5> 5\
+<6> 6\
+<7> 7\
+<8> 8\
+<9> 9\
+<10> 10 \'96 Right\
+<98 fixed>\
+<99 /"Don't know"\
+\
+\
+[conspiracyScaleW3]\{s
+\fs21 cale 0 10
+\fs22 \} When it comes to some events \'96 for example, the 9/11 attacks, the death of Princess Diana and the assassination of John F. Kennedy \'96 it is suggested that the \'93official version\'94 of these events could be an attempt to hide the truth to the public. This \'93official version\'94 could mask the fact that these events have been planned by a secret alliance of powerful individuals or organizations (like the secret services or the government). So how true or false do you think is the following statement: I think that the official version of the events given by the authorities very often hides the truth.\
+-[conspiracyRespW3] Completely false | Completely true\
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf2 \
+\
+\pard\pardeftab720\ri-340\partightenfactor0
+\cf0 [needForScalesW3]\{grid roworder=randomize\} The final questions are about what you\'92re like as a person.  For each of the statements below, please indicate how well it describes you.  The scale runs from 1 (not at all like you) to 7 (extremely like you).\cf3 \
+\cf0 -[needClosure1W3] 
+\b I find that a well ordered life with regular hours suits my temperament
+\b0 \
+-[needClosure2W3] 
+\b I don\'92t like to go into a situation without knowing what I can expect from it
+\b0 \
+-[needClosure3W3] I think it is fun to change my plans at the last moment\
+-[needClosure4W3] My personal space is usually messy and disorganized\
+-[needCognition1W3] I would prefer complex to simple problems.\
+-[needCognition2W3] I prefer to think about small, daily projects rather than long-term ones\
+-[needCognition3W3] I really enjoy a task that involves coming up with new solutions to problems\
+-[needCognition4W3] It's enough for me that something gets the job done; I don't care how or why it works\
+<1>1 \'96 Not at all like you\uc0\u8232 <2>2\u8232 <3>3\
+<4>4 \uc0\u8232 <5>5\u8232 <6>6\
+<7>7 \'96 Extremely like you\
+}

@@ -1,0 +1,421 @@
+
+
+
+
+
+[scotReferendumTurnout]{single} Many people don't vote in elections these days. Did you vote in the referendum on Scottish independence that was held on 18th September 2014?
+<1> Yes, I voted
+<2> No, I did not vote
+<3> No, I was not eligible to vote
+<99>Don't know
+
+[scotReferendumVote if scotReferendumTurnout==1]{single}  And how did you vote in the independence referendum?
+<1> I voted "Yes" (Scotland should be an independent country)
+<2> I voted "No" (Scotland should not be an independent country)
+<99>Don't know
+
+
+{module reasonyes  if scotReferendumVote==1 and (scotReferendumIntention==2 or scotReferendumLeaning==2)}
+
+[reasonSwitchYes] {single} In an earlier survey, you mentioned that you were thinking of voting ‘No’. Please could you briefly explain the SINGLE MOST IMPORTANT reason why you changed your mind and went for ‘Yes’?
+<1> [reasonSwitchYes_text] {open rows=1 cols=63 prompt="Please write in"}
+<98> None
+<99> Don't know
+
+{end module reasonyes}
+
+{module reasonno if scotReferendumVote==2 and (scotReferendumIntention==1 or scotReferendumLeaning==1)}
+
+[reasonSwitchNo ]{single} In an earlier survey, you mentioned that you were thinking of voting ‘Yes’. Please could you briefly explain the SINGLE MOST IMPORTANT reason why you changed your mind and went for ‘No’?
+<1> [reasonSwitchNo_text] {open rows=1 cols=63 prompt="Please write in"}
+<98> None
+<99> Don't know
+
+{end module reasonno}
+
+[reasonReferendumYes if scotReferendumVote==1]{single} Which of these best describes the *single most important* reason why you voted Yes?
+<1>Because it would have made Scotland better off economically
+<2> Because of the current coalition government at Westminster
+<3>Because it would have helped to protect public services
+<4>Because the whole Westminster system is rotten
+<5>So that Scotland always gets the governments it votes for 
+<6>Because independence is the natural state of nations like Scotland
+<7> Something else [reasonReferendumYeso]{open}
+
+[reasonReferendumNo if scotReferendumVote==2]{single} Which of these best describes the *single most important* reason why you voted No?
+<1>Because independence would have made Scotland worse off economically
+<2>I wanted to vote ‘Yes’ but in the end it seemed a bit too risky
+<3>Because Scotland is going to get the extra powers I want anyway
+<4>Because I didn’t trust Alex Salmond
+<5>Because I feel British and believe in the Union
+<6>Because there were too many unanswered questions 
+<7> Something else [reasonReferendumNoo]{open}
+
+
+[happyScotIndepResultNo]{scale 0 10 dk=1 dk_text="Don't know"} Overall, how happy or how disappointed are you that the "No" side won the referendum?
+-[happyScotIndepResultNoScale] Extremely disappointed |  Extremely happy
+
+
+[emotScotIndep]{grid roworder=randomize}  On a scale from 0 to 10, could you say how much you feel each of the following now that Scotland has voted to remain in the UK?
+-[emotScotIndepFear] Afraid
+-[emotScotIndepExcite] Excited
+-[emotScotIndepRelief] Relieved
+-[emotScotIndepAngry] Angry
+-[emotScotIndepHope] Hopeful
+<111> 0 – Not at all
+<1> 1
+<2> 2
+<3> 3
+<4> 4
+<5> 5
+<6> 6
+<7> 7
+<8> 8
+<9> 9
+<10> 10 – Extremely
+
+
+[blameNoVote if scotReferendumVote==1]{single order=randomize} Some voters hold different people responsible for the fact that the Yes side lost the election. What about you? Which of the following do you think is most responsible for the fact that the Yes side lost.
+<1> The banks and other businesses for warning about the consequences of a Yes
+<2> The Westminster leaders for misleading voters about more powers
+<3> The press for bias towards No
+<4> Yes Scotland for a poor campaign
+<5> Better Together for its negative campaign
+<6> The Scottish electorate for losing its nerve
+<7> The BBC for bias towards No
+<9 fixed> Other [blameNoOthero]{open}
+<111 fixed xor> None of these
+<99 fixed xor> Don't know
+
+[refContactPost] Has anyone campaigning in the referendum contacted you during the past four weeks?
+<1> No 
+<2> Yes
+<3> Don't know
+
+[refContactWhoPost if refContactPost==2] {multiple} Could you indicate which campaigning organizations or parties have contacted you during the past four weeks? *Please select all that apply*.
+<1> Better Together 
+<2> Yes Scotland
+<3> Scottish National Party
+<4> Scottish Labour Party
+<5> Scottish Liberal Democrats
+<6> Scottish Conservative Party
+<7> Scottish Green Party
+<8> Any other organization campaigning *for* independence
+<9> Any other organization campaigning *against* independence
+<111 xor> None of these 
+
+
+{module rongrid if refContactWhoPost.has_any([1,2,3,4,5,6,7,8,9])}
+
+
+
+[refcontactBTPost if 1 in refContactWhoPost] {multiple order=randomize} Could you indicate all the ways that you have been contacted by Better Together, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe1]{open}
+
+[refcontactYSaPost if 2 in refContactWhoPost] {multiple order=randomize} Could you indicate all the ways that you have been contacted by Yes Scotland, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe2]{open}
+
+[refcontactSNPPost if 3 in refContactWhoPost] {multiple order=randomize}  Could you indicate all the ways that you have been contacted by the Scottish National Party, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe3]{open}
+
+[refcontactSLPPost if 4 in refContactWhoPost] {multiple order=randomize} Could you indicate all the ways that you have been contacted by the Scottish Labour Party, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe4]{open}
+
+[refcontactSLDPost if 5 in refContactWhoPost] {multiple order=randomize}  Could you indicate all the ways that you have been contacted by the Scottish Liberal Democrats, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe5]{open}
+
+[refcontactSCPPost if 6 in refContactWhoPost] {multiple order=randomize} Could you indicate all the ways that you have been contacted by the Scottish Conservative Party, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe6]{open}
+
+[refcontactSGPPost if 7 in refContactWhoPost] {multiple order=randomize} Could you indicate all the ways that you have been contacted by the Scottish Green Party, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe7]{open}
+
+[refcontactothforPost if 8 in refContactWhoPost] {multiple order=randomize}  Could you indicate all the ways that you have been contacted by any other organization campaigning *for* independence, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe8]{open}
+
+[refcontactothagPost if 9 in refContactWhoPost] {multiple order=randomize} Could you indicate all the ways that you have been contacted by any other organization campaigning *against* independence, again selecting all that apply?
+<1>  Telephone call
+<2>  Leaflet or letter delivered to your home
+<3>  A visit to your home
+<4>  Contact in the street
+<5>  Email
+<6>  Twitter
+<7>  Facebook
+<8>  Text message (SMS)
+<9 fixed>  Other Ways [oe9]{open}
+
+{end module rongrid}
+
+
+[campaignTone]{grid roworder=randomize} Campaigning is said to be ‘positive’ when it focuses on the benefits of the campaigners’ own ideas and proposals.  ‘Negative’ campaigning is focused on attacking the ideas and proposals of the other side.  Leaving aside how you voted for a moment, how would you rate the two referendum campaigns on a scale from ‘very positive’ to ‘very negative’?
+-[campaignToneYes] Yes Scotland
+-[campaignToneNo] Better Together
+<1>  Very positive
+<2>  Fairly positive
+<3>  Neither positive nor negative
+<4>  Fairly negative
+<5>  Very negative
+<6>  Don’t know
+
+[campaignVision]{grid roworder=randomize} And again leaving aside how you voted, how successful would you say that each side was in putting forward a clear vision of the Scotland it wants?
+-[campaignVisionYes] Yes Scotland
+-[campaignVisionNo] Better Together
+<1>  Very successful
+<2>  Fairly successful
+<3>  Neither successful nor unsuccessful
+<4>  Fairly unsuccessful
+<5>  Very unsuccessful
+<6>  Don’t know
+
+ 
+[campaignAssessPost]{grid roworder=randomize}To what extent do you agree or disagree with the following statements? 
+-[refFairnessW2] Both sides of the referendum debate have had a fair chance to present their point of view
+-[otherSideW2] Although I was on one side of the debate, I must admit that the other side had some strong points
+-[ScotEmpwrW2] The independence debate has given ordinary people a say in Scotland's future.
+-[refUnder18W2] It was a good idea to allow 16- and 17-year-olds to vote in the referendum
+-[refImportantW2] This Independence referendum was more important than any other vote in Scotland in the last fifty years
+<1>Strongly agree
+<2>Agree
+<3>Neither agree nor disagree
+<4>Disagree
+<5>Strongly disagree
+
+[fairConductRefW2]{grid roworder=randomize} How fairly or unfairly do you think the following have behaved during the referendum process?
+-[fairElecCommW2] The Electoral Commission
+-[fairBBCW2] The BBC
+-[fairYesCampW2] The ‘Yes Scotland’ campaign
+-[fairNoCampW2] The ‘Better Together’ campaign
+-[fairUKGovtW2] The UK government
+-[fairScotGovtW2] The Scottish government
+<1> Very fairly
+<2> Quite fairly
+<3>Neither fairly nor unfairly
+<4> Quite unfairly
+<5> Very unfairly
+<99>Don’t know
+
+[refElecStakesW2]{single} People disagree about the importance of different types of elections.  Overall, how much difference do you think it will make which side won the 2014 referendum on Scottish independence?
+<1>A great deal
+<2>Quite a lot
+<3>Some
+<4>Not very much
+<5>None at all
+<6>Don’t know
+
+
+[refClimatePost] {grid} And what do you think will happen to levels of political involvement – both your own and in the Scottish public as a whole – now that the referendum is over?
+-[refClimateSelfPost] Yourself
+-[refClimateScotPost] The Scottish public
+<1> Will stay more involved
+<2> Will go back to normal
+<99> Don’t know
+
+ [efficGeneral2]{grid roworder=randomize}To what extent do you agree or disagree with these statements? 
+-[efficDontCare2] Politicians don’t care much about what people like me think.
+-[efficNoSay2] People like me don’t have any say about what the government does
+-[efficComplicated2] Sometimes politics and government seem so complicated that a person like me can’t really understand what’s going on
+-[dutyToVote22] It is every citizen's duty to vote in an election
+-[dutyToVoteRef2] It was every citizen’s duty to vote in the Scottish independence referendum
+<1>Strongly agree  
+<2>Agree
+<3>Neither agree nor disagree
+<4>Disagree
+<5>Strongly disagree
+
+
+{page satDemPage}
+
+[satDem] {grid} On the whole, how satisfied or dissatisfied are you with the way that democracy works in:
+-[satDemUK] The UK as a whole
+-[satDemScot] Scotland
+-[satDemEU] The European Union
+<1> Very dissatisfied
+<2> A little dissatisfied
+<3> Fairly satisfied
+<4> Very satisfied
+<99> Don't know
+
+{end page satDemPage}
+
+
+
+{page approvalRatingPage}
+[approvalRating]{dyngrid} How far do you approve or disapprove of the job that these governments are doing?
+-[approveUKGovt] The UK government
+-[approveScotGovt] The Scottish government
+<1>Strongly disapprove
+<2> Disapprove
+<3>Neither approve nor disapprove
+<4> Approve
+<5>Strongly approve
+<99><<span style="color:FireBrick">Don't know</span>>
+{end page approvalRatingPage}
+
+
+[fairShareGrid]{grid width=100} Would you say that each of these gets more or less than its fair share of UK government spending?
+-[engFairShare] England
+-[scotFairShare] Scotland
+-[walesFairShare] Wales
+-[londonFairShare] London
+<1> Much less than its fair share
+<2> A little less than its fair share
+<3> More or less its fair share
+<4> A little more than its fair share
+<5>Much more than its fair share
+<99>Don't know
+
+
+[certaintyScotUnion]{single} Now that it has voted to remain in the Union, how sure are you about what will happen to Scotland?
+<1> I am very unsure what will happen
+<2> I am quite unsure what will happen
+<3> I am quite sure what will happen
+<4> I am very sure what will happen
+<99>Don't know
+
+
+[scotDevoMax]{single} Now that Scotland has voted to remain part of the United Kingdom, *should* the Scottish Parliament have more powers than it does at present, fewer powers, or should the Parliament's powers stay about the same as they are now. 
+<5>It should have many more powers
+<4>It should have some more powers
+<3>It should have about the same powers as it does now
+<2>It should have fewer powers than it does now
+<1>It should have many fewer powers than it does now
+<99>Don't know
+
+[expectationDevoScot]{single} And do you think that the powers devolved to the Scottish parliament *will* change?
+<5>It will get many more powers
+<4>It will get some more powers
+<3>It will neither gain nor lose any powers
+<2>It will lose some powers
+<1>It will lose many powers
+<99>Don't know
+
+
+{page unionRisks2Page}
+ [unionRisks2]{dyngrid roworder=randomize} Now that Scotland has voted to stay in the UK, how likely do you think it is that...
+-[unionEconomy2] The general economic situation in Scotland will be worse
+-[unionInequality2] The gap between rich and poor will get wider  
+-[unionMeBetterOff2] I personally will be better off
+-[unionBudgetCuts2] A UK government will cut the spending available for Scottish public services
+-[unionMorePowers2] Westminster will transfer substantially more powers to the Scottish Parliament
+-[unionEULeave2] The UK will vote in a referendum to leave the European Union
+-[unionBenefitsDown2] Welfare benefits will go down
+<1> Very unlikely
+<2>Fairly unlikely
+<3>Neither likely nor unlikely
+<4>Fairly likely
+<5> Very likely
+<99><<span style="color:FireBrick">Don't know</span>>
+{end page unionRisks2Page}
+
+
+[newpowerstime] In the last week of the campaign the leaders of the three main UK parties issued a vow to Scottish voters that “extensive new powers” would be granted to the Scottish Parliament.  In your opinion, how long do you think it will be before these powers are delivered?
+<1> Within six months
+<2> Within one year
+<3> Within two years
+<4> Within five years
+<5> Within ten years
+<6> They will never be delivered
+<99> Don’t know
+
+
+[nationalIdentities]{scale 1 7 dk = 1 dk_text="Don't know"} Finally, a few questions about you.  First, where would you place yourself on these scales?
+-[britishness] Not at all British | Very strongly British
+-[scottishness] Not at all Scottish | Very strongly Scottish
+-[englishness] Not at all English | Very strongly English
+
+
+[leftRight]{scale 0 10 dk = 1 dk_text="Don't know"} In politics people sometimes talk of left and right. Where would you place yourself on the following scale? 
+ -[leftrightresponse] Left | Right
+
+
+[scotElectionVoteConst]{single} In Scottish Parliament elections, voters receive two separate ballot papers.  One is to vote for an individual member to represent your CONSTITUENCY.  The other is to vote for a party list for your REGION.  If there was a Scottish Parliament election tomorrow, which party’s candidate would you vote for to represent your local _constituency_?
+<1> Scottish Labour
+<2> Scottish Conservative 
+<3> Scottish Liberal Democrat
+<4> Scottish National Party (SNP) 
+<6> Scottish Green Party
+<7> United Kingdom Independence Party (UKIP)
+<8>Other[scotElectionVoteConstOth]{open prompt = "please specify"}
+<111> I would not vote
+<99>Don't know
+
+
+
+[scotElectionVoteList]{single} And which party are you most likely to vote for in your _region_?
+<1> Scottish Labour
+<2> Scottish Conservative 
+<3> Scottish Liberal Democrat
+<4> Scottish National Party (SNP) 
+<6> Scottish Green Party
+<7> United Kingdom Independence Party (UKIP)
+<8>Other[scotElectionVoteListOth]{open prompt = "please specify"}
+<111> I would not vote
+<99>Don't know
+
+
+
+
